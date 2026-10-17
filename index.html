@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SellPilot AI — Business Growth Platform</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #090d18;
+    color: #f4f7ff;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 7%;
+    border-bottom: 1px solid #26304a;
+    background: #101629;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #6ee7f9;
+}
+
+header button, .primary-btn {
+    background: linear-gradient(100deg, #8055f6, #397cf6);
+    border: none;
+    padding: 12px 18px;
+    border-radius: 9px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+main {
+    max-width: 1250px;
+    margin: auto;
+    padding: 42px 22px;
+}
+
+.eyebrow {
+    color: #6ee7f9;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: clamp(30px, 5vw, 48px);
+    margin: 14px 0;
+}
+
+.subtitle {
+    color: #a4b0ca;
+    line-height: 1.7;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 30px 0;
+}
+
+.card {
+    background: #121a2c;
+    border: 1px solid #27334d;
+    border-radius: 16px;
+    padding: 23px;
+    margin-bottom: 18px;
+}
+
+.stat-label {
+    color: #a4b0ca;
+    font-size: 13px;
+}
+
+.stat-value {
+    font-size: 27px;
+    font-weight: bold;
+    margin: 17px 0 8px;
+}
+
+.green {
+    color: #4ce0ad;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 18px;
+}
+
+h2 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.description {
+    color: #a4b0ca;
+    font-size: 13px;
+    margin-bottom: 22px;
+    line-height: 1.6;
+}
+
+label {
+    display: block;
+    color: #bac5dc;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    background: #0a1020;
+    color: white;
+    border: 1px solid #34405d;
+    border-radius: 9px;
+    margin-bottom: 17px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.result {
+    background: #17283a;
+    border: 1px solid #315064;
+    border-radius: 12px;
+    padding: 18px;
+    margin-top: 8px;
+}
+
+.result h3 {
+    color: #4ce0ad;
+    font-size: 29px;
+    margin: 10px 0;
+}
+
+.product {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid #283249;
+}
+
+.product:last-child {
+    border-bottom: none;
+}
+
+.product p {
+    color: #a4b0ca;
+    font-size: 12px;
+    margin-top: 7px;
+}
+
+.badge {
+    color: #6ee7f9;
+    font-size: 12px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 130px;
+    background: #0a1020;
+    color: white;
+    border: 1px solid #34405d;
+    border-radius: 9px;
+    padding: 13px;
+    resize: vertical;
+    margin-bottom: 13px;
+    line-height: 1.6;
+}
+
+.secondary-btn {
+    padding: 11px 15px;
+    background: #202b45;
+    color: white;
+    border: 1px solid #394866;
+    border-radius: 9px;
+    margin: 4px 5px 4px 0;
+}
+
+footer {
+    text-align: center;
+    color: #8190ad;
+    padding: 28px 15px;
+    font-size: 12px;
+}
+
+@media (max-width: 850px) {
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 450px) {
+    header {
+        padding: 18px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    header button {
+        padding: 10px;
+    }
+
+    .stats {
+        gap: 9px;
+    }
+
+    .card {
+        padding: 17px;
+    }
+
+    .stat-value {
+        font-size: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">SellPilot <span>AI.</span></div>
+    <button onclick="scrollToSection('profit')">Analyze Product ↗</button>
+</header>
+
+<main>
+
+    <p class="eyebrow">AI BUSINESS GROWTH PLATFORM</p>
+    <h1>Grow smarter.<br>Sell with confidence.</h1>
+    <p class="subtitle">
+        Research product ideas, calculate profit, and create marketing drafts
+        from one powerful business dashboard.
+    </p>
+
+    <section class="stats">
+        <div class="card">
+            <p class="stat-label">Estimated Profit / Unit</p>
+            <div class="stat-value green" id="statProfit">₹420</div>
+            <p class="stat-label">Based on sample costs</p>
+        </div>
+
+        <div class="card">
+            <p class="stat-label">Profit Margin</p>
+            <div class="stat-value" id="statMargin">42%</div>
+            <p class="stat-label">Calculated live</p>
+        </div>
+
+        <div class="card">
+            <p class="stat-label">Product Ideas</p>
+            <div class="stat-value">03</div>
+            <p class="stat-label">Sample concepts</p>
+        </div>
+
+        <div class="card">
+            <p class="stat-label">Ad Drafts</p>
+            <div class="stat-value" id="draftCount">01</div>
+            <p class="stat-label">Created this session</p>
+        </div>
+    </section>
+
+    <section class="layout">
+
+        <div class="card" id="profit">
+            <h2>Profit Lab</h2>
+            <p class="description">
+                Enter your costs and selling price to estimate your profit.
+            </p>
+
+            <label for="cost">Product Cost (₹)</label>
+            <input id="cost" type="number" min="0" value="350">
+
+            <label for="price">Selling Price (₹)</label>
+            <input id="price" type="number" min="0" value="999">
+
+            <label for="shipping">Shipping Cost (₹)</label>
+            <input id="shipping" type="number" min="0" value="70">
+
+            <label for="ads">Advertising Cost Per Sale (₹)</label>
+            <input id="ads" type="number" min="0" value="100">
+
+            <label for="fees">Other Fees (₹)</label>
+            <input id="fees" type="number" min="0" value="59">
+
+            <label for="units">Expected Units Sold</label>
+            <input id="units" type="number" min="0" value="50">
+
+            <div class="result">
+                <p class="stat-label">Estimated Profit Per Unit</p>
+                <h3 id="profitResult">₹420</h3>
+                <p class="stat-label" id="totalResult">
+                    Estimated total profit: ₹21,000
+                </p>
+                <p class="stat-label" id="breakEven" style="margin-top:9px">
+                    Break-even price: ₹579
+                </p>
+            </div>
+
+            <p class="description" style="margin-top:15px;margin-bottom:0">
+                Estimates only. Include taxes, returns and all business costs
+                before making a real investment.
+            </p>
+        </div>
+
+        <div>
+
+            <div class="card" id="products">
+                <h2>Product Hunter</h2>
+                <p class="description">
+                    Example product niches to research before investing.
+                    These are not live market trends.
+                </p>
+
+                <div class="product">
+                    <div>
+                        <strong>🎒 Travel Organizer Kit</strong>
+                        <p>Travel accessories · Bundle idea</p>
+                    </div>
+                    <span class="badge">Research</span>
+                </div>
+
+                <div class="product">
+                    <div>
+                        <strong>💡 Desk Lighting Set</strong>
+                        <p>Home office · Gift products</p>
+                    </div>
+                    <span class="badge">Research</span>
+                </div>
+
+                <div class="product">
+                    <div>
+                        <strong>🐾 Pet Enrichment Pack</strong>
+                        <p>Pet care · Accessory bundle</p>
+                    </div>
+                    <span class="badge">Research</span>
+                </div>
+
+                <label for="niche" style="margin-top:20px">
+                    Enter a product niche
+                </label>
+                <input id="niche" placeholder="e.g. reusable water bottles">
+
+                <button class="primary-btn" onclick="researchNiche()">
+                    Create Research Checklist
+                </button>
+
+                <div id="researchResult" class="result" hidden
+                     style="white-space:pre-line;line-height:1.8"></div>
+            </div>
+
+            <div class="card" id="adsStudio">
+                <h2>AI Ad Studio</h2>
+                <p class="description">
+                    Generate a starter marketing draft using local templates.
+                </p>
+
+                <label for="adProduct">Product Name</label>
+                <input id="adProduct" value="Travel Organizer Kit">
+
+                <label for="audience">Target Audience</label>
+                <input id="audience" value="frequent travelers">
+
+                <label for="benefit">Main Benefit</label>
+                <input id="benefit" value="keep travel essentials organized">
+
+                <label for="tone">Brand Style</label>
+                <select id="tone">
+                    <option value="friendly">Friendly</option>
+                    <option value="premium">Premium</option>
+                    <option value="bold">Bold</option>
+                </select>
+
+                <textarea id="adResult" readonly>Meet your new travel companion: Travel Organizer Kit. Designed for frequent travelers who want to keep travel essentials organized. Explore it today.</textarea>
+
+                <button class="primary-btn" onclick="generateAd()">
+                    Generate Ad Draft ✦
+                </button>
+
+                <button class="secondary-btn" onclick="copyAd()">
+                    Copy Ad
+                </button>
+            </div>
+
+            <div class="card" id="pricing">
+                <h2>Subscription Plans</h2>
+                <p class="description">
+                    Example pricing for a future subscription business.
+                    No payments are connected yet.
+                </p>
+
+                <div class="product">
+                    <div>
+                        <strong>Starter</strong>
+                        <p>For new sellers</p>
+                    </div>
+                    <strong>Free</strong>
+                </div>
+
+                <div class="product">
+                    <div>
+                        <strong>Pro</strong>
+                        <p>For growing businesses</p>
+                    </div>
+                    <strong>₹1,499/mo</strong>
+                </div>
+
+                <div class="product">
+                    <div>
+                        <strong>Business</strong>
+                        <p>For teams and agencies</p>
+                    </div>
+                    <strong>₹4,999/mo</strong>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<footer>
+    © 2026 SellPilot AI · Business planning demo · Earnings not guaranteed
+</footer>
+
+<script>
+const byId = id => document.getElementById(id);
+
+function money(value) {
+    return new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR",
+        maximumFractionDigits: 2
+    }).format(value);
+}
+
+function calculateProfit() {
+    const cost = Math.max(0, Number(byId("cost").value) || 0);
+    const price = Math.max(0, Number(byId("price").value) || 0);
+    const shipping = Math.max(0, Number(byId("shipping").value) || 0);
+    const ads = Math.max(0, Number(byId("ads").value) || 0);
+    const fees = Math.max(0, Number(byId("fees").value) || 0);
+    const units = Math.max(0, Number(byId("units").value) || 0);
+
+    const profit = price - cost - shipping - ads - fees;
+    const margin = price > 0 ? profit / price * 100 : 0;
+    const breakEven = cost + shipping + ads + fees;
+
+    byId("profitResult").textContent = money(profit);
+    byId("profitResult").style.color =
+        profit >= 0 ? "#4ce0ad" : "#ff718b";
+
+    byId("totalResult").textContent =
+        "Estimated total profit: " + money(profit * units);
+
+    byId("breakEven").textContent =
+        "Break-even price: " + money(breakEven);
+
+    byId("statProfit").textContent = money(profit);
+    byId("statMargin").textContent = margin.toFixed(1) + "%";
+}
+
+["cost", "price", "shipping", "ads", "fees", "units"].forEach(id => {
+    byId(id).addEventListener("input", calculateProfit);
+});
+
+function researchNiche() {
+    const niche = byId("niche").value.trim();
+
+    if (!niche) {
+        alert("Please enter a product niche first.");
+        byId("niche").focus();
+        return;
+    }
+
+    const output =
+        "RESEARCH CHECKLIST: " + niche + "\n\n" +
+        "1. Check current demand across marketplaces.\n" +
+        "2. Compare at least 10 competing products.\n" +
+        "3. Get supplier quotes and calculate total costs.\n" +
+        "4. Estimate advertising cost and break-even price.\n" +
+        "5. Check product safety and applicable rules.\n" +
+        "6. Test demand before buying large inventory.\n\n" +
+        "This is a checklist, not live market research.";
+
+    byId("researchResult").textContent = output;
+    byId("researchResult").hidden = false;
+}
+
+function generateAd() {
+    const product = byId("adProduct").value.trim() || "Your product";
+    const audience = byId("audience").value.trim() || "customers";
+    const benefit = byId("benefit").value.trim() || "make life easier";
+    const tone = byId("tone").value;
+
+    let opening = "Meet your new favorite:";
+    let ending = "Explore it today.";
+
+    if (tone === "premium") {
+        opening = "Thoughtfully designed:";
+        ending = "Discover a more considered experience.";
+    }
+
+    if (tone === "bold") {
+        opening = "Ready for an upgrade?";
+        ending = "Take the next step today.";
+    }
+
+    byId("adResult").value =
+        opening + " " + product +
+        ". Made for " + audience +
+        " who want to " + benefit +
+        ". " + ending;
+
+    byId("draftCount").textContent =
+        String(Number(byId("draftCount").textContent) + 1);
+}
+
+async function copyAd() {
+    const text = byId("adResult").value;
+
+    try {
+        await navigator.clipboard.writeText(text);
+        alert("Ad copied successfully!");
+    } catch (error) {
+        byId("adResult").select();
+        alert("Press Ctrl+C to copy the selected ad.");
+    }
+}
+
+function scrollToSection(id) {
+    byId(id).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+calculateProfit();
+</script>
+
+</body>
+</html>
